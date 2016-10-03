@@ -4,6 +4,7 @@ namespace Suth\LaravelSift;
 
 use SiftClient;
 use Illuminate\Routing\Router;
+use \Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\ServiceProvider;
 use Suth\LaravelSift\Middleware\ManageSiftSession;
 use Suth\LaravelSift\ViewComposers\SnippetComposer;
@@ -55,9 +56,9 @@ class SiftServiceProvider extends ServiceProvider
      * @param  \Illuminate\Routing\Router  $router
      * @return void
      */
-    public function boot(DispatcherContract $events, Router $router)
+    public function boot(DispatcherContract $events, Router $router, Kernel $kernel)
     {
-        $router->pushMiddlewareToGroup('web', ManageSiftSession::class);
+        $kernel->pushMiddleware(ManageSiftSession::class);
 
         foreach ($this->listen as $event => $listeners) {
             foreach ($listeners as $listener) {
