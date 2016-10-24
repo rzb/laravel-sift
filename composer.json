@@ -8,6 +8,12 @@
             "email": "renatozuma@gmail.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/rzb/laravel-sift"
+        }
+    ],
     "require": {
         "siftscience/sift-php" : "1.*",
         "illuminate/contracts": "5.1.*|5.2.*|5.3.*",
